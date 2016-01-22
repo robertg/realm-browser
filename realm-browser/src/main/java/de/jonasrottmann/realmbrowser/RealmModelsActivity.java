@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
 
 import static de.jonasrottmann.realmbrowser.RealmBrowser.getInstance;
@@ -56,7 +55,7 @@ public class RealmModelsActivity extends AppCompatActivity {
         setContentView(R.layout.realm_browser_ac_realm_list_view);
         setSupportActionBar((Toolbar) findViewById(R.id.realm_browser_toolbar));
 
-        mRealm = RealmBrowser.getInstance().getRealmFactory().getInstance(this);
+        mRealm = RealmBrowser.getInstance().getRealmFactory().getRealm(this);
 
         List<ModuleWithCount> list = new ArrayList<>();
         for (Class<? extends RealmObject> file : getInstance().getRealmModelList()) {

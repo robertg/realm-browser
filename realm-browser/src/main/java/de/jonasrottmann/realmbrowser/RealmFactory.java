@@ -7,5 +7,5 @@ import io.realm.Realm;
  * Meshable, Inc. Copyright 2016
  */
 public interface RealmFactory {
-  public Realm getInstance(Context context);
+  public Realm getRealm(Context context);
 }

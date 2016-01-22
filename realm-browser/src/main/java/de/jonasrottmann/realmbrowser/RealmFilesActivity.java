@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.exceptions.RealmMigrationNeededException;
 
 public class RealmFilesActivity extends AppCompatActivity {
@@ -95,7 +94,7 @@ public class RealmFilesActivity extends AppCompatActivity {
     private void onItemClicked(int position) {
         try {
             String realmFileName = mAdapter.getItem(position);
-            Realm realm = RealmBrowser.getInstance().getRealmFactory().getInstance(this);
+            Realm realm = RealmBrowser.getInstance().getRealmFactory().getRealm(this);
             realm.close();
             RealmModelsActivity.start(this, realmFileName);
         } catch (RealmMigrationNeededException e) {

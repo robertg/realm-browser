@@ -37,7 +37,6 @@ import de.jonasrottmann.realmbrowser.model.RealmPreferences;
 import de.jonasrottmann.realmbrowser.utils.MagicUtils;
 import io.realm.Case;
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmQuery;
@@ -108,7 +107,7 @@ public class RealmBrowserActivity extends AppCompatActivity implements RealmAdap
 
         // Realm Browser
         String realmFileName = getIntent().getStringExtra(EXTRAS_REALM_FILE_NAME);
-        mRealm = RealmBrowser.getInstance().getRealmFactory().getInstance(this);
+        mRealm = RealmBrowser.getInstance().getRealmFactory().getRealm(this);
         if (getIntent().getExtras().containsKey(EXTRAS_REALM_MODEL_INDEX)) {
             int index = getIntent().getIntExtra(EXTRAS_REALM_MODEL_INDEX, 0);
             mRealmObjectClass = RealmBrowser.getInstance().getRealmModelList().get(index);
