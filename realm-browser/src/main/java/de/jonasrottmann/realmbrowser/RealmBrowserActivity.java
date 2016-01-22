@@ -109,8 +109,9 @@ public class RealmBrowserActivity extends AppCompatActivity implements RealmAdap
         // Realm Browser
         String realmFileName = getIntent().getStringExtra(EXTRAS_REALM_FILE_NAME);
         RealmConfiguration config = new RealmConfiguration.Builder(this)
-                .name(realmFileName)
-                .build();
+            .name(realmFileName)
+            .deleteRealmIfMigrationNeeded()
+            .build();
         mRealm = Realm.getInstance(config);
         if (getIntent().getExtras().containsKey(EXTRAS_REALM_MODEL_INDEX)) {
             int index = getIntent().getIntExtra(EXTRAS_REALM_MODEL_INDEX, 0);

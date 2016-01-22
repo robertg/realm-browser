@@ -97,6 +97,7 @@ public class RealmFilesActivity extends AppCompatActivity {
             String realmFileName = mAdapter.getItem(position);
             RealmConfiguration config = new RealmConfiguration.Builder(this)
                     .name(realmFileName)
+                    .deleteRealmIfMigrationNeeded()
                     .build();
             Realm realm = Realm.getInstance(config);
             realm.close();

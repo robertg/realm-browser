@@ -58,7 +58,10 @@ public class RealmModelsActivity extends AppCompatActivity {
 
         String realmFileName = getIntent().getStringExtra(EXTRAS_REALM_FILE_NAME);
 
-        RealmConfiguration config = new RealmConfiguration.Builder(this).name(realmFileName).build();
+        RealmConfiguration config = new RealmConfiguration.Builder(this)
+            .name(realmFileName)
+            .deleteRealmIfMigrationNeeded()
+            .build();
         mRealm = Realm.getInstance(config);
 
         List<ModuleWithCount> list = new ArrayList<>();
