@@ -95,11 +95,7 @@ public class RealmFilesActivity extends AppCompatActivity {
     private void onItemClicked(int position) {
         try {
             String realmFileName = mAdapter.getItem(position);
-            RealmConfiguration config = new RealmConfiguration.Builder(this)
-                    .name(realmFileName)
-                    .deleteRealmIfMigrationNeeded()
-                    .build();
-            Realm realm = Realm.getInstance(config);
+            Realm realm = RealmBrowser.getInstance().getRealmFactory().getInstance(this);
             realm.close();
             RealmModelsActivity.start(this, realmFileName);
         } catch (RealmMigrationNeededException e) {

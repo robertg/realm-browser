@@ -19,6 +19,7 @@ public final class RealmBrowser {
 
     private static final RealmBrowser sInstance = new RealmBrowser();
     private final List<Class<? extends RealmObject>> mRealmModelList;
+    private RealmFactory realmFactory;
 
 
 
@@ -80,5 +81,13 @@ public final class RealmBrowser {
     @SafeVarargs
     public final void addRealmModel(Class<? extends RealmObject>... arr) {
         mRealmModelList.addAll(Arrays.asList(arr));
+    }
+
+    public RealmFactory getRealmFactory() {
+        return realmFactory;
+    }
+
+    public void setRealmFactory(RealmFactory realmFactory) {
+        this.realmFactory = realmFactory;
     }
 }

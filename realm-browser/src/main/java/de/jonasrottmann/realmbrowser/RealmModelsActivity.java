@@ -56,13 +56,7 @@ public class RealmModelsActivity extends AppCompatActivity {
         setContentView(R.layout.realm_browser_ac_realm_list_view);
         setSupportActionBar((Toolbar) findViewById(R.id.realm_browser_toolbar));
 
-        String realmFileName = getIntent().getStringExtra(EXTRAS_REALM_FILE_NAME);
-
-        RealmConfiguration config = new RealmConfiguration.Builder(this)
-            .name(realmFileName)
-            .deleteRealmIfMigrationNeeded()
-            .build();
-        mRealm = Realm.getInstance(config);
+        mRealm = RealmBrowser.getInstance().getRealmFactory().getInstance(this);
 
         List<ModuleWithCount> list = new ArrayList<>();
         for (Class<? extends RealmObject> file : getInstance().getRealmModelList()) {
